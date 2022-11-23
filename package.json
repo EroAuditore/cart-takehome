@@ -1,0 +1,25 @@
+{
+  "name": "cart-takehome",
+  "version": "1.0.0",
+  "description": "Take home assestment",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EroAuditore/cart-takehome.git"
+  },
+  "author": "Eduardo Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EroAuditore/cart-takehome/issues"
+  },
+  "homepage": "https://github.com/EroAuditore/cart-takehome#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1"
+  }
+}
