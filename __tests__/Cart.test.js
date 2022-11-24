@@ -81,40 +81,44 @@ describe("Cart of items", () => {
     cartTest.addItem(cartItem);
     expect(cartTest.items[0].Finalprice).toBe(32.19);
   });
+});
 
-  it.only("Sums the total prices", () => {
-    //2 book at 12.49
-    //1 music CD at 14.99
-    //1 chocolate bar at 0.85
-    const bookItem = {
-      description: "book",
-      price: 27.99,
-      hasBasicTax: false,
-      hasImportTax: false,
-    };
-    const CDItem = {
-      description: "music CD",
-      price: 14.99,
-      hasBasicTax: true,
-      hasImportTax: false,
-    };
-    const chocolateItem = {
-      description: "music CD",
-      price: 14.99,
-      hasBasicTax: false,
-      hasImportTax: false,
-    };
-    const cartTest = new Cart();
-    const cartBookItem = new Item(bookItem);
-    const cartCDItem = new Item(CDItem);
-    const cartChocolateItem = new Item(chocolateItem);
+describe("Cart calculates", () => {
+  const bookItem = {
+    description: "book",
+    price: 12.49,
+    hasBasicTax: false,
+    hasImportTax: false,
+  };
+  const CDItem = {
+    description: "music CD",
+    price: 14.99,
+    hasBasicTax: true,
+    hasImportTax: false,
+  };
+  const chocolateItem = {
+    description: "chocolate",
+    price: 0.85,
+    hasBasicTax: false,
+    hasImportTax: false,
+  };
+  //2 book at 12.49
+  //1 music CD at 14.99
+  //1 chocolate bar at 0.85
 
-    cartTest.addItem(cartBookItem);
-    cartTest.addItem(cartBookItem);
-    cartTest.addItem(cartCDItem);
-    cartTest.addItem(cartChocolateItem);
+  const cartTest = new Cart();
+  const cartBookItem = new Item(bookItem);
+  const cartCDItem = new Item(CDItem);
+  const cartChocolateItem = new Item(chocolateItem);
+  cartTest.addItem(cartBookItem);
+  cartTest.addItem(cartBookItem);
+  cartTest.addItem(cartCDItem);
+  cartTest.addItem(cartChocolateItem);
 
+  it("Sums the total prices with taxes", () => {
     expect(cartTest.total).toBe(42.32);
   });
-  it.todo("Sums the total taxes");
+  it("Sums the total taxes", () => {
+    expect(cartTest.taxes).toBe(1.5);
+  });
 });
