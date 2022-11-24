@@ -99,6 +99,8 @@ Once the interface is open
 
 - Click on the button "Add to cart" of each item you want to add, the cart will be display the amount total and taxes
 
+- To clear the items added to cart, click on button "Clear cart"
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
