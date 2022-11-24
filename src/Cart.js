@@ -44,20 +44,36 @@ export default class Cart {
 
   render() {
     this.refContainer.innerHTML = "";
+    const title = document.createElement("h3");
+    title.innerText = "Cart";
+    this.refContainer.append(title);
     this.items.map((i) => {
       const p = document.createElement("p");
-      p.innerText = i.quantity + " " + i.name + " at  " + i.Finalprice;
+      p.innerText =
+        i.quantity +
+        " " +
+        i.name +
+        " at  " +
+        parseFloat(i.Finalprice).toFixed(2);
       this.refContainer.append(p);
     });
+
     const ptax = document.createElement("p");
-    ptax.innerText = "Sales Taxes: " + this.taxes;
+    ptax.innerText = "Sales Taxes: " + parseFloat(this.taxes).toFixed(2);
     const ptotal = document.createElement("p");
     ptotal.innerText = "Total: " + parseFloat(this.total).toFixed(2);
+    const clearbtn = document.createElement("button");
+    clearbtn.innerText = "Clear cart";
+    clearbtn.onclick = () => this.clear();
     this.refContainer.append(ptax);
     this.refContainer.append(ptotal);
+    this.refContainer.append(clearbtn);
   }
 
-  calculateSubtotal(item) {}
-
-  calculateTotal() {}
+  clear() {
+    this.refContainer.innerHTML = "";
+    this.items = [];
+    this.total = 0;
+    this.taxes = 0;
+  }
 }
