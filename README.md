@@ -88,6 +88,11 @@ A simple JavaScript interface to test Torc challenge
   npm run test
   ```
 
+- If you want to add more items to display:
+- In main.js there is a variable "items" where you can add more items
+- If you want and item calculate basic tax set hasBasicTax property to true
+- If you want and item calculate import tax set hasImportTax property to true
+
 ## Usage
 
 Once the interface is open
