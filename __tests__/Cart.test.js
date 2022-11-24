@@ -44,8 +44,44 @@ describe("Cart of items", () => {
     expect(cartTest.items[0].quantity).toBe(2);
     expect(cartTest.items[1].quantity).toBe(1);
   });
-  it.todo("Adds 10% basic tax to all goods execpt books and food");
-  it.todo("Adds 5% tax to all imported items");
+  it("Adds 10% of basic tax", () => {
+    const testItemImported = {
+      description: "imported bottle of perfume",
+      price: 27.99,
+      hasBasicTax: true,
+      hasImportTax: false,
+    };
+    const cartTest = new Cart();
+    const cartItem = new Item(testItemImported);
+    cartTest.addItem(cartItem);
+    expect(cartTest.items[0].Finalprice).toBe(30.79);
+  });
+  it("Adds 5% of import tax", () => {
+    const testItemImported = {
+      description: "imported bottle of perfume",
+      price: 27.99,
+      hasBasicTax: false,
+      hasImportTax: true,
+    };
+    const cartTest = new Cart();
+    const cartItem = new Item(testItemImported);
+    cartTest.addItem(cartItem);
+    expect(cartTest.items[0].Finalprice).toBe(29.39);
+  });
+
+  it("Adds 10% and 5% of basic and import tax", () => {
+    const testItemImported = {
+      description: "imported bottle of perfume",
+      price: 27.99,
+      hasBasicTax: true,
+      hasImportTax: true,
+    };
+    const cartTest = new Cart();
+    const cartItem = new Item(testItemImported);
+    cartTest.addItem(cartItem);
+    expect(cartTest.items[0].Finalprice).toBe(32.19);
+  });
+
   it.todo("Sums the total prices");
   it.todo("Sums the total taxes");
 });

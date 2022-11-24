@@ -2,6 +2,7 @@ export default class Item {
   constructor(elm, handleAddToCart) {
     this.name = elm.description;
     this.price = elm.price;
+    this.Finalprice = elm.price;
     this.quantity = 1;
     this.hasImportTax = elm.hasImportTax;
     this.hasBasicTax = elm.hasBasicTax;

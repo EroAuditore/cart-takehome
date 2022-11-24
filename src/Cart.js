@@ -1,3 +1,5 @@
+import { calculateBasicTax, calculateImportTax } from "./Calculate";
+
 export default class Cart {
   constructor(refContainer) {
     this.items = [];
@@ -8,10 +10,25 @@ export default class Cart {
 
   addItem(item) {
     const index = this.items.findIndex((i) => i.name === item.name);
+    const itemAdded = this.items[index];
 
-    if (index >= 0) {
-      this.items[index].addItem();
+    if (itemAdded) {
+      itemAdded.addItem();
+      itemAdded.Finalprice = +parseFloat(
+        (calculateBasicTax(itemAdded) +
+          calculateImportTax(itemAdded) +
+          itemAdded.price) *
+          itemAdded.quantity
+      ).toFixed(2);
     } else {
+      item.Finalprice = +parseFloat(
+        (calculateBasicTax(item) + calculateImportTax(item) + item.price) *
+          item.quantity
+      ).toFixed(2);
+      console.log(
+        "item.Finalprice",
+        calculateBasicTax(item) + calculateImportTax(item) + item.price
+      );
       this.items.push(item);
     }
   }
@@ -26,7 +43,7 @@ export default class Cart {
     this.refContainer.innerHTML = "";
     this.items.map((i) => {
       const p = document.createElement("p");
-      p.innerText = i.quantity + " " + i.name + "   " + i.price;
+      p.innerText = i.quantity + " " + i.name + "   " + i.Finalprice;
       this.refContainer.append(p);
     });
   }

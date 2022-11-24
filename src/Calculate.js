@@ -9,7 +9,6 @@ const calculateBasicTax = (item) => {
   let basicTax = 0;
   if (item.hasBasicTax) {
     basicTax = item.price * 0.1;
-    //basicTax = Math.round((basicTax * 100) / 100);
     basicTax = +parseFloat(basicTax).toFixed(2);
   }
   return basicTax;
@@ -18,11 +17,10 @@ const calculateBasicTax = (item) => {
 const calculateImportTax = (item) => {
   let importTax = 0;
   if (item.hasImportTax) {
-    importTax = item.price * 0.1;
-    importTax = parseFloat(importTax).toFixed(2);
-    return importTax;
-    //basicTax = Math.round((basicTax =Number.EPSILON)*100)/100
+    importTax = item.price * 0.05;
+    importTax = +parseFloat(importTax).toFixed(2);
   }
+  return importTax;
 };
 
 export { calculateBasicTax, calculateImportTax };
