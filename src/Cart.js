@@ -14,21 +14,25 @@ export default class Cart {
 
     if (itemAdded) {
       itemAdded.addItem();
+      itemAdded.basicTax = calculateBasicTax(itemAdded);
+      itemAdded.importTax = calculateImportTax(itemAdded);
       itemAdded.Finalprice = +parseFloat(
-        (calculateBasicTax(itemAdded) +
-          calculateImportTax(itemAdded) +
-          itemAdded.price) *
+        (itemAdded.basicTax + itemAdded.importTax + itemAdded.price) *
           itemAdded.quantity
       ).toFixed(2);
+      this.total += +parseFloat(itemAdded.Finalprice).toFixed(2);
+      this.taxes += +parseFloat(itemAdded.basicTax).toFixed(2);
+      this.taxes += +parseFloat(itemAdded.importTax).toFixed(2);
     } else {
+      item.basicTax = calculateBasicTax(item);
+      item.importTax = calculateImportTax(item);
       item.Finalprice = +parseFloat(
-        (calculateBasicTax(item) + calculateImportTax(item) + item.price) *
-          item.quantity
+        (item.basicTax + item.importTax + item.price) * item.quantity
       ).toFixed(2);
-      console.log(
-        "item.Finalprice",
-        calculateBasicTax(item) + calculateImportTax(item) + item.price
-      );
+
+      this.total += +parseFloat(item.Finalprice).toFixed(2);
+      this.taxes += +parseFloat(item.basicTax).toFixed(2);
+      this.taxes += +parseFloat(item.importTax).toFixed(2);
       this.items.push(item);
     }
   }

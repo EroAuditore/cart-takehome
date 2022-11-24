@@ -4,6 +4,8 @@ export default class Item {
     this.price = elm.price;
     this.Finalprice = elm.price;
     this.quantity = 1;
+    this.basicTax = 0;
+    this.importTax = 0;
     this.hasImportTax = elm.hasImportTax;
     this.hasBasicTax = elm.hasBasicTax;
     this.handleAddToCart = handleAddToCart;

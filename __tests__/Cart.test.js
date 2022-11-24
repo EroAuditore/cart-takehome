@@ -82,6 +82,39 @@ describe("Cart of items", () => {
     expect(cartTest.items[0].Finalprice).toBe(32.19);
   });
 
-  it.todo("Sums the total prices");
+  it.only("Sums the total prices", () => {
+    //2 book at 12.49
+    //1 music CD at 14.99
+    //1 chocolate bar at 0.85
+    const bookItem = {
+      description: "book",
+      price: 27.99,
+      hasBasicTax: false,
+      hasImportTax: false,
+    };
+    const CDItem = {
+      description: "music CD",
+      price: 14.99,
+      hasBasicTax: true,
+      hasImportTax: false,
+    };
+    const chocolateItem = {
+      description: "music CD",
+      price: 14.99,
+      hasBasicTax: false,
+      hasImportTax: false,
+    };
+    const cartTest = new Cart();
+    const cartBookItem = new Item(bookItem);
+    const cartCDItem = new Item(CDItem);
+    const cartChocolateItem = new Item(chocolateItem);
+
+    cartTest.addItem(cartBookItem);
+    cartTest.addItem(cartBookItem);
+    cartTest.addItem(cartCDItem);
+    cartTest.addItem(cartChocolateItem);
+
+    expect(cartTest.total).toBe(42.32);
+  });
   it.todo("Sums the total taxes");
 });
