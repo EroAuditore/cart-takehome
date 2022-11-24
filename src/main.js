@@ -4,19 +4,19 @@ import Item from "./Item.js";
 let items = [
   {
     description: "Book",
-    price: 12.99,
-    hasBasicTax: true,
+    price: 13.99,
+    hasBasicTax: false,
     hasImportTax: false,
   },
   {
-    description: "Food",
+    description: "Imported chocolate",
     price: 12.99,
-    hasBasicTax: true,
-    hasImportTax: false,
+    hasBasicTax: false,
+    hasImportTax: true,
   },
   {
-    description: "perfume",
-    price: 12.99,
+    description: "Imported perfume",
+    price: 100.0,
     hasBasicTax: true,
     hasImportTax: true,
   },

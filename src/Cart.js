@@ -1,4 +1,4 @@
-import { calculateBasicTax, calculateImportTax } from "./Calculate";
+import { calculateBasicTax, calculateImportTax } from "./Calculate.js";
 
 export default class Cart {
   constructor(refContainer) {
@@ -13,7 +13,6 @@ export default class Cart {
     const itemAdded = this.items[index];
 
     if (itemAdded) {
-      console.log("itemAdded", itemAdded);
       itemAdded.addItem();
       itemAdded.basicTax = calculateBasicTax(itemAdded);
       itemAdded.importTax = calculateImportTax(itemAdded);
@@ -47,9 +46,15 @@ export default class Cart {
     this.refContainer.innerHTML = "";
     this.items.map((i) => {
       const p = document.createElement("p");
-      p.innerText = i.quantity + " " + i.name + "   " + i.Finalprice;
+      p.innerText = i.quantity + " " + i.name + " at  " + i.Finalprice;
       this.refContainer.append(p);
     });
+    const ptax = document.createElement("p");
+    ptax.innerText = "Sales Taxes: " + this.taxes;
+    const ptotal = document.createElement("p");
+    ptotal.innerText = "Total: " + parseFloat(this.total).toFixed(2);
+    this.refContainer.append(ptax);
+    this.refContainer.append(ptotal);
   }
 
   calculateSubtotal(item) {}
