@@ -44,9 +44,11 @@ export default class Cart {
 
   render() {
     this.refContainer.innerHTML = "";
+    const container = document.createElement("div");
+    container.className = "cart";
     const title = document.createElement("h3");
     title.innerText = "Cart";
-    this.refContainer.append(title);
+    container.append(title);
     this.items.map((i) => {
       const p = document.createElement("p");
       p.innerText =
@@ -55,7 +57,7 @@ export default class Cart {
         i.name +
         " at  " +
         parseFloat(i.Finalprice).toFixed(2);
-      this.refContainer.append(p);
+      container.append(p);
     });
 
     const ptax = document.createElement("p");
@@ -65,9 +67,10 @@ export default class Cart {
     const clearbtn = document.createElement("button");
     clearbtn.innerText = "Clear cart";
     clearbtn.onclick = () => this.clear();
-    this.refContainer.append(ptax);
-    this.refContainer.append(ptotal);
-    this.refContainer.append(clearbtn);
+    container.append(ptax);
+    container.append(ptotal);
+    container.append(clearbtn);
+    this.refContainer.append(container);
   }
 
   clear() {
